@@ -1,0 +1,49 @@
+﻿name: Windows Setup Olustur
+
+on:
+  push:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build-setup:
+    runs-on: windows-latest
+
+    steps:
+      - name: Kodlari Indir
+        uses: actions/checkout@v4
+
+      - name: .NET 11 Kur
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '11.0.x'
+
+      - name: .NET MAUI Windows Workload Kur
+        run: dotnet workload install maui-windows
+
+      - name: Uygulamayi Yayinla (Publish)
+        shell: pwsh
+        run: |
+          $csproj = Get-ChildItem -Recurse -Filter "CankiriKesifTakip.csproj" | Select-Object -First 1
+          dotnet publish $csproj.FullName -f net11.0-windows10.0.19041.0 -c Release -r win-x64 -p:WindowsPackageType=None -p:WindowsAppSDKSelfContained=true -p:SelfContained=true -o ./publish
+
+      - name: Setup.exe Paketle
+        shell: pwsh
+        run: |
+          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" setup.iss
+
+      - name: Setup Dosyasini Artifact Olarak Yukle
+        uses: actions/upload-artifact@v4
+        with:
+          name: CankiriKesifTakip_Setup
+          path: installer/CankiriKesifTakip_Setup.exe
+
+      - name: GitHub Releases Altinda Yayinla
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: v1.0.${{ github.run_number }}
+          name: CankiriKesifTakip Setup v1.0.${{ github.run_number }}
+          files: installer/CankiriKesifTakip_Setup.exe

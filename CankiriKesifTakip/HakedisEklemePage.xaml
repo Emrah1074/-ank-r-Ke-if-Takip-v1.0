@@ -1,0 +1,454 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CankiriKesifTakip.HakedisEklemePage"
+             Title="Hakediş Raporu Oluştur">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+            <Label Text="Hakediş Başlık ve İmalat Bilgileri"
+                   FontSize="22"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#CCCCCC" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="1. İş ve Sözleşme Bilgileri" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" />
+
+                    <Label Text="Yapılan İşin Adı:" FontAttributes="Bold" />
+                    <Entry x:Name="IsinAdiEntry" Placeholder="Örn: ÇANKIRI MERKEZ ... ONARIM İŞİ" />
+
+                    <Label Text="Yapılan İşin Etüt / Proje No.su:" />
+                    <Entry x:Name="EtutProjeNoEntry" Text="-" Placeholder="Örn: -" />
+
+                    <Label Text="Yüklenicinin Adı / Ticari Unvanı:" FontAttributes="Bold" />
+                    <Entry x:Name="YukleniciEntry" Placeholder="Firma ticari unvanını giriniz" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşme Bedeli / Maliyet (₺):" FontAttributes="Bold" />
+                            <Entry x:Name="MaliyetEntry" Placeholder="Örn: 150000" Keyboard="Numeric" TextChanged="MaliyetEntry_TextChanged" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Gecikme Cezası (₺):" />
+                            <Entry x:Name="GecikmeCezasiEntry" Placeholder="Varsa tutar giriniz" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="İhale Tarihi ve No:" />
+                            <Entry x:Name="IhaleTarihiEntry" Placeholder="Örn: 21.07.2022-684654" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="İhale Kom. Karar Tarihi ve No.su:" />
+                            <Entry x:Name="IhaleKomKararEntry" Text="-" Placeholder="Örn: -" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşme Tarihi ve No.su:" />
+                            <Entry x:Name="SozlesmeTarihiEntry" Placeholder="Örn: 09.08.2022" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="İşyeri Teslim Tarihi:" />
+                            <Entry x:Name="IsyeriTeslimTarihiEntry" Placeholder="Örn: 15.08.2022" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşmeye Göre İşin Süresi:" />
+                            <Entry x:Name="IsinSuresiEntry" Placeholder="Örn: 40 gün" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Sözleşmeye Göre İş Bitim Tarihi:" />
+                            <Entry x:Name="IsBitimTarihiEntry" Placeholder="Örn: 23.09.2022" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Verilen Avanslar Toplamı:" />
+                            <Entry x:Name="VerilenAvansEntry" Placeholder="Opsiyonel" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Mahsubu Yapılan Avans:" />
+                            <Entry x:Name="MahsupAvansEntry" Placeholder="Opsiyonel" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="İşin Bitirildiği Tarih:" />
+                            <Entry x:Name="IsinBitirildigiTarihEntry" Placeholder="Örn: 23.09.2022" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#CCCCCC" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="2. Hakediş Bilgileri" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" />
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Hakediş Tarihi:" />
+                            <Entry x:Name="HakedisTarihiEntry" Placeholder="Örn: 14.10.2022" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Hakediş No.su:" />
+                            <Entry x:Name="HakedisNoEntry" Text="1 ve KESİN" Placeholder="Örn: 1 ve KESİN" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Uygulama Yılı:" />
+                            <Entry x:Name="UygulamaYiliEntry" Text="2026" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#CCCCCC" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="3. Kontrol Görevlileri ve Onay" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli1AdEntry" Text="Mustafa TOPAL" Placeholder="1. Görevli Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli1UnvanEntry" Text="İnşaat Teknikeri" Placeholder="1. Görevli Unvanı" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli2AdEntry" Text="İsmail ÜZGÖÇ" Placeholder="2. Görevli Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli2UnvanEntry" Text="Elektrik Teknikeri" Placeholder="2. Görevli Unvanı" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli3AdEntry" Text="İsmail ÇOKYILMAZ" Placeholder="3. Görevli Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli3UnvanEntry" Text="Test.Kont" Placeholder="3. Görevli Unvanı" />
+                    </Grid>
+
+                    <Label Text="Onaylayan Yetkili:" FontAttributes="Bold" Margin="0,6,0,0" />
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="OnayAdEntry" Text="Mevlüt DANACI" Placeholder="Yetkili Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="OnayKurumEntry" Text="İl Özel İdaresi" Placeholder="Kurum" />
+                        <Entry Grid.Column="2" x:Name="OnayUnvanEntry" Text="Destek Hizmetleri Müdürü" Placeholder="Unvan" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#1e40af" BackgroundColor="#eff6ff" Padding="15">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Hızlı Toplu İmalat Aktarımı (Tek Seferde 3 Grup)" FontSize="16" FontAttributes="Bold" TextColor="#1e40af" />
+                    <Label Text="İçinde İNŞAATÖDE, elk ve mekanik sayfaları bulunan bir Excel (.xlsx) dosyasını seçerek üç grubu tek tıkla doldurabilirsiniz:" FontSize="12" TextColor="#334155" />
+                    <Button Text="Tek Excel Dosyasından Tüm Grupları Aktar (.xlsx)"
+                            Clicked="TumGruplariExceldenAktar_Clicked"
+                            BackgroundColor="#1e40af"
+                            TextColor="White"
+                            FontAttributes="Bold" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#2b579a" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0" Text="4. Yapılan İşler Listesi - İNŞAAT İMALATLARI" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Temizle" Clicked="InsaatListesiniTemizle_Clicked" BackgroundColor="#64748b" TextColor="White" FontSize="12" Padding="10,4" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0"
+                                Text="Excel'den Toplu Ekle (.xlsx)"
+                                Clicked="InsaatExceldenEkle_Clicked"
+                                BackgroundColor="#15803d"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                        <Button Grid.Column="1"
+                                Text="Word'den Toplu Ekle (.docx)"
+                                Clicked="InsaatWorddenEkle_Clicked"
+                                BackgroundColor="#1d4ed8"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,2*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Poz No:" />
+                            <Entry x:Name="PozNoEntry" Placeholder="Örn: 15.120.1001" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Yapılan İş:" FontAttributes="Bold" />
+                            <Entry x:Name="YapilanIsEntry" Placeholder="İmalat tanımını giriniz" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Ölçü:" />
+                            <Entry x:Name="OlcuEntry" Placeholder="Örn: m², Adet" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşmedeki Yüzdesi (%):" />
+                            <Entry x:Name="SozlesmeYuzdeEntry" Placeholder="Örn: 12,50" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Gerçekleşen Toplam (%):" />
+                            <Entry x:Name="GerceklesenYuzdeEntry" Placeholder="Örn: 12,50" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Önceki Hakediş (%):" />
+                            <Entry x:Name="OncekiYuzdeEntry" Text="0" Placeholder="Örn: 0" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Button Text="+ Tek Satır İnşaat İmalatı Ekle"
+                            Clicked="InsaatKalemEkle_Clicked"
+                            BackgroundColor="#1f6e43"
+                            TextColor="White" />
+
+                    <CollectionView x:Name="InsaatKalemlerView" EmptyView="Henüz inşaat imalatı kalemi eklenmedi.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 6" Stroke="#E0E0E0" Padding="10" Margin="0,0,0,6">
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                            <Label Text="{Binding BaslikSatiri}" FontAttributes="Bold" FontSize="14" />
+                                            <Label Text="{Binding YuzdeDetay}" FontSize="12" TextColor="#2b579a" />
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="1"
+                                                Text="Sil"
+                                                Clicked="InsaatKalemSil_Clicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#dc3545"
+                                                TextColor="White"
+                                                Padding="10,4" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#d97706" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0" Text="5. Yapılan İşler Listesi - ELEKTRİK İMALATLARI" FontSize="17" FontAttributes="Bold" TextColor="#b45309" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Temizle" Clicked="ElektrikListesiniTemizle_Clicked" BackgroundColor="#64748b" TextColor="White" FontSize="12" Padding="10,4" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0"
+                                Text="Excel'den Toplu Ekle (.xlsx)"
+                                Clicked="ElektrikExceldenEkle_Clicked"
+                                BackgroundColor="#15803d"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                        <Button Grid.Column="1"
+                                Text="Word'den Toplu Ekle (.docx)"
+                                Clicked="ElektrikWorddenEkle_Clicked"
+                                BackgroundColor="#1d4ed8"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,2*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Poz No:" />
+                            <Entry x:Name="ElkPozNoEntry" Placeholder="Örn: 35.100.2102" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Yapılan İş:" FontAttributes="Bold" />
+                            <Entry x:Name="ElkYapilanIsEntry" Placeholder="Elektrik imalat tanımını giriniz" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Ölçü:" />
+                            <Entry x:Name="ElkOlcuEntry" Placeholder="Örn: Adet, m" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşmedeki Yüzdesi (%):" />
+                            <Entry x:Name="ElkSozlesmeYuzdeEntry" Placeholder="Örn: 0,140761" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Gerçekleşen Toplam (%):" />
+                            <Entry x:Name="ElkGerceklesenYuzdeEntry" Placeholder="Örn: 0,140761" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Önceki Hakediş (%):" />
+                            <Entry x:Name="ElkOncekiYuzdeEntry" Text="0" Placeholder="Örn: 0" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Button Text="+ Tek Satır Elektrik İmalatı Ekle"
+                            Clicked="ElektrikKalemEkle_Clicked"
+                            BackgroundColor="#b45309"
+                            TextColor="White" />
+
+                    <CollectionView x:Name="ElektrikKalemlerView" EmptyView="Henüz elektrik imalatı kalemi eklenmedi.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 6" Stroke="#E0E0E0" Padding="10" Margin="0,0,0,6">
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                            <Label Text="{Binding BaslikSatiri}" FontAttributes="Bold" FontSize="14" />
+                                            <Label Text="{Binding YuzdeDetay}" FontSize="12" TextColor="#b45309" />
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="1"
+                                                Text="Sil"
+                                                Clicked="ElektrikKalemSil_Clicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#dc3545"
+                                                TextColor="White"
+                                                Padding="10,4" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#0d9488" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0" Text="6. Yapılan İşler Listesi - MEKANİK TESİSAT İMALATLARI" FontSize="17" FontAttributes="Bold" TextColor="#0f766e" VerticalOptions="Center" />
+                        <Button Grid.Column="1" Text="Temizle" Clicked="MekanikListesiniTemizle_Clicked" BackgroundColor="#64748b" TextColor="White" FontSize="12" Padding="10,4" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="10">
+                        <Button Grid.Column="0"
+                                Text="Excel'den Toplu Ekle (.xlsx)"
+                                Clicked="MekanikExceldenEkle_Clicked"
+                                BackgroundColor="#15803d"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                        <Button Grid.Column="1"
+                                Text="Word'den Toplu Ekle (.docx)"
+                                Clicked="MekanikWorddenEkle_Clicked"
+                                BackgroundColor="#1d4ed8"
+                                TextColor="White"
+                                FontAttributes="Bold" />
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,2*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Poz No:" />
+                            <Entry x:Name="MekPozNoEntry" Placeholder="Örn: 25.130.3201" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Yapılan İş:" FontAttributes="Bold" />
+                            <Entry x:Name="MekYapilanIsEntry" Placeholder="Mekanik tesisat imalat tanımını giriniz" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Ölçü:" />
+                            <Entry x:Name="MekOlcuEntry" Placeholder="Örn: Adet, m" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="10">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşmedeki Yüzdesi (%):" />
+                            <Entry x:Name="MekSozlesmeYuzdeEntry" Placeholder="Örn: 0,464507" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Gerçekleşen Toplam (%):" />
+                            <Entry x:Name="MekGerceklesenYuzdeEntry" Placeholder="Örn: 0,464507" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Önceki Hakediş (%):" />
+                            <Entry x:Name="MekOncekiYuzdeEntry" Text="0" Placeholder="Örn: 0" Keyboard="Numeric" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Button Text="+ Tek Satır Mekanik Tesisat Ekle"
+                            Clicked="MekanikKalemEkle_Clicked"
+                            BackgroundColor="#0f766e"
+                            TextColor="White" />
+
+                    <CollectionView x:Name="MekanikKalemlerView" EmptyView="Henüz mekanik tesisat kalemi eklenmedi.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border StrokeShape="RoundRectangle 6" Stroke="#E0E0E0" Padding="10" Margin="0,0,0,6">
+                                    <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                        <VerticalStackLayout Grid.Column="0" Spacing="2">
+                                            <Label Text="{Binding BaslikSatiri}" FontAttributes="Bold" FontSize="14" />
+                                            <Label Text="{Binding YuzdeDetay}" FontSize="12" TextColor="#0f766e" />
+                                        </VerticalStackLayout>
+                                        <Button Grid.Column="1"
+                                                Text="Sil"
+                                                Clicked="MekanikKalemSil_Clicked"
+                                                CommandParameter="{Binding .}"
+                                                BackgroundColor="#dc3545"
+                                                TextColor="White"
+                                                Padding="10,4" />
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#4b5563" BackgroundColor="#f8fafc" Padding="15">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="7. Yapılan İşler Listesi - İCMAL TABLOSU (Otomatik Hesaplanan Özet)" FontSize="17" FontAttributes="Bold" TextColor="#1e293b" />
+                    <Label x:Name="IcmalInsaatLabel" Text="1. İnşaat İmalatları: %0,0000  |  Bu Hakediş: 0,00 TL" FontSize="13" TextColor="#2b579a" />
+                    <Label x:Name="IcmalElektrikLabel" Text="2. Elektrik İmalatları: %0,0000  |  Bu Hakediş: 0,00 TL" FontSize="13" TextColor="#b45309" />
+                    <Label x:Name="IcmalMekanikLabel" Text="3. Mekanik Tesisat: %0,0000  |  Bu Hakediş: 0,00 TL" FontSize="13" TextColor="#0f766e" />
+                    <BoxView HeightRequest="1" Color="#cbd5e1" Margin="0,4" />
+                    <Label x:Name="IcmalToplamLabel" Text="ANA GRUP TOPLAMI: %0,0000  |  Bu Hakediş Tutarı: 0,00 TL" FontSize="14" FontAttributes="Bold" TextColor="#111827" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Kaydet ve Excel Raporunu Oluştur"
+                    Clicked="RaporOlustur_Clicked"
+                    BackgroundColor="#2b579a"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="48" />
+
+            <Grid ColumnDefinitions="*,Auto" Margin="0,15,0,5">
+                <Label Grid.Column="0"
+                       Text="Oluşturulan Hakedişler Listesi"
+                       FontSize="19"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Button Grid.Column="1"
+                        Text="Listeyi Temizle"
+                        Clicked="TumunuSil_Clicked"
+                        BackgroundColor="#b02a37"
+                        TextColor="White"
+                        FontSize="12"
+                        Padding="12,6" />
+            </Grid>
+
+            <CollectionView x:Name="HakedisListesiView" EmptyView="Henüz kaydedilmiş bir hakediş bulunmuyor.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 8" Stroke="#DDDDDD" Padding="12" Margin="0,0,0,8">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                    <Label Text="{Binding IsinAdi}" FontAttributes="Bold" FontSize="15" />
+                                    <Label Text="{Binding Yuklenici}" FontSize="13" TextColor="#555555" />
+                                    <Label Text="{Binding OzetBilgi}" FontSize="13" TextColor="#2b579a" />
+                                </VerticalStackLayout>
+                                <HorizontalStackLayout Grid.Column="1" Spacing="8" VerticalOptions="Center">
+                                    <Button Text="Excel Aç"
+                                            Clicked="KayitliExcelAc_Clicked"
+                                            CommandParameter="{Binding DosyaYolu}"
+                                            BackgroundColor="#1f6e43"
+                                            TextColor="White" />
+                                    <Button Text="Sil"
+                                            Clicked="KayitSil_Clicked"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#dc3545"
+                                            TextColor="White" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="CankiriKesifTakip.KabulEvrakiPage"
+             Title="Geçici Kabul Teklif Belgesi (Ek-1)">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="14">
+            <Label Text="Ek - 1: Yapım İşleri Geçici Kabul Teklif Belgesi"
+                   FontSize="21"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center" />
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#CCCCCC" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="1. İş ve Sözleşme Bilgileri" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" />
+
+                    <Label Text="İşin Adı:" FontAttributes="Bold" />
+                    <Entry x:Name="IsinAdiEntry" Placeholder="Örn: ÇANKIRI MERKEZ HACI MURAD-I VELİ ANADOLU İMAM HATİP LİSESİ ONARIM İŞİ" />
+
+                    <Label Text="Yüklenicinin Adı / Ticari Unvanı:" FontAttributes="Bold" />
+                    <Entry x:Name="YukleniciEntry" Placeholder="Örn: YUSUF CAN TÜRKMEN İNŞ, GIDA,NAK.OTOM,TMZ,EMK,SAN,TİC,LTD, ŞTİ" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşme Tarihi:" FontAttributes="Bold" />
+                            <Entry x:Name="SozlesmeTarihiEntry" Placeholder="Örn: 20.06.2019" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Sözleşme Bedeli (TL):" FontAttributes="Bold" />
+                            <Entry x:Name="SozlesmeBedeliEntry" Placeholder="Örn: 61.400,00" TextChanged="SozlesmeBedeliEntry_TextChanged" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="Sözleşme Bedeli (Yazıyla):" />
+                    <Entry x:Name="SozlesmeBedeliYaziylaEntry" Placeholder="Örn: altmışbirbin dörtyüz türk lirası" />
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Sözleşmeye Göre İşin Süresi (Takvim Günü):" />
+                            <Entry x:Name="IsinSuresiEntry" Placeholder="Örn: 55 gün ( ellibeş gün )" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Sözleşmeye Göre İşin Bitirilmesi Gereken Tarih:" />
+                            <Entry x:Name="SozlesmeBitimTarihiEntry" Placeholder="Örn: 18.08.2019" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="Varsa Süre Uzatımları:" />
+                            <Entry x:Name="SureUzatimlariEntry" Text="-" Placeholder="Örn: - veya 15 gün" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Süre Uzatımı Dahil Bitirilmesi Gereken Tarih:" />
+                            <Entry x:Name="SureUzatimliBitimTarihiEntry" Text="-" Placeholder="Örn: - veya 02.09.2019" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Grid ColumnDefinitions="*,*,*" ColumnSpacing="12">
+                        <VerticalStackLayout Grid.Column="0" Spacing="4">
+                            <Label Text="İşin Bitirildiği Tarih:" FontAttributes="Bold" />
+                            <Entry x:Name="IsinBitirildigiTarihEntry" Placeholder="Örn: 19.08.2019" TextChanged="IsinBitirildigiTarihEntry_TextChanged" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="1" Spacing="4">
+                            <Label Text="Yüklenici Dilekçe Tarihi:" />
+                            <Entry x:Name="DilekceTarihiEntry" Placeholder="Örn: 19.08.2019" />
+                        </VerticalStackLayout>
+                        <VerticalStackLayout Grid.Column="2" Spacing="4">
+                            <Label Text="Ön İnceleme / Belge Tarihi:" FontAttributes="Bold" />
+                            <Entry x:Name="BelgeTarihiEntry" Placeholder="Örn: 27.08.2019" />
+                        </VerticalStackLayout>
+                    </Grid>
+
+                    <Label Text="Dilekçenin Verildiği İdare / Kurum:" />
+                    <Entry x:Name="KurumAdiEntry" Text="Milli Eğitim Müdürlüğüne" Placeholder="Örn: Milli Eğitim Müdürlüğüne" />
+                </VerticalStackLayout>
+            </Border>
+
+            <Border StrokeShape="RoundRectangle 8" Stroke="#CCCCCC" Padding="15">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="2. Görevli veya Görevlilerin Bilgileri" FontSize="17" FontAttributes="Bold" TextColor="#2b579a" />
+
+                    <Label Text="1. Görevli:" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli1AdEntry" Text="Fatma KAYALI" Placeholder="Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli1UnvanEntry" Text="İl Milli Eğitim Müd. - Mimar" Placeholder="Görev Unvanı" />
+                    </Grid>
+
+                    <Label Text="2. Görevli:" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli2AdEntry" Text="Fahri ACAR" Placeholder="Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli2UnvanEntry" Text="İl Milli Eğitim Müd. - Tesisat Kon.Teknisyeni" Placeholder="Görev Unvanı" />
+                    </Grid>
+
+                    <Label Text="3. Görevli:" FontAttributes="Bold" />
+                    <Grid ColumnDefinitions="*,2*" ColumnSpacing="12">
+                        <Entry Grid.Column="0" x:Name="Gorevli3AdEntry" Text="Emrah KAYMAZ" Placeholder="Adı Soyadı" />
+                        <Entry Grid.Column="1" x:Name="Gorevli3UnvanEntry" Text="İl Milli Eğitim Müd. - Elektrik Teknisyeni" Placeholder="Görev Unvanı" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Border>
+
+            <Button Text="Kaydet ve Geçici Kabul Teklif Belgesini Oluştur (Word)"
+                    Clicked="WordOlustur_Clicked"
+                    BackgroundColor="#2b579a"
+                    TextColor="White"
+                    FontAttributes="Bold"
+                    HeightRequest="48" />
+
+            <Grid ColumnDefinitions="*,Auto" Margin="0,15,0,5">
+                <Label Grid.Column="0"
+                       Text="Oluşturulan Geçici Kabul Belgeleri"
+                       FontSize="19"
+                       FontAttributes="Bold"
+                       VerticalOptions="Center" />
+                <Button Grid.Column="1"
+                        Text="Listeyi Temizle"
+                        Clicked="TumunuSil_Clicked"
+                        BackgroundColor="#b02a37"
+                        TextColor="White"
+                        FontSize="12"
+                        Padding="12,6" />
+            </Grid>
+
+            <CollectionView x:Name="KabulListesiView" EmptyView="Henüz oluşturulmuş bir geçici kabul belgesi bulunmuyor.">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border StrokeShape="RoundRectangle 8" Stroke="#DDDDDD" Padding="12" Margin="0,0,0,8">
+                            <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                                <VerticalStackLayout Grid.Column="0" Spacing="3">
+                                    <Label Text="{Binding IsinAdi}" FontAttributes="Bold" FontSize="15" />
+                                    <Label Text="{Binding Yuklenici}" FontSize="13" TextColor="#555555" />
+                                    <Label Text="{Binding OzetBilgi}" FontSize="13" TextColor="#2b579a" />
+                                </VerticalStackLayout>
+                                <HorizontalStackLayout Grid.Column="1" Spacing="8" VerticalOptions="Center">
+                                    <Button Text="Word Aç"
+                                            Clicked="KayitliWordAc_Clicked"
+                                            CommandParameter="{Binding DosyaYolu}"
+                                            BackgroundColor="#1d4ed8"
+                                            TextColor="White" />
+                                    <Button Text="Sil"
+                                            Clicked="KayitSil_Clicked"
+                                            CommandParameter="{Binding .}"
+                                            BackgroundColor="#dc3545"
+                                            TextColor="White" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

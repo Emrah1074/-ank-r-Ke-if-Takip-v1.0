@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="CankiriKesifTakip.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:CankiriKesifTakip"
+    FlyoutBehavior="Flyout"
+    Title="CankiriKesifTakip">
+
+    <FlyoutItem Title="Ana Sayfa">
+        <ShellContent
+            Title="Ana Sayfa"
+            ContentTemplate="{DataTemplate local:MainPage}"
+            Route="MainPage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Hakediş Ekleme">
+        <ShellContent
+            Title="Hakediş Ekleme"
+            ContentTemplate="{DataTemplate local:HakedisEklemePage}"
+            Route="HakedisEklemePage" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Geçici Kabul Evrakı">
+        <ShellContent
+            Title="Geçici Kabul Evrakı"
+            ContentTemplate="{DataTemplate local:KabulEvrakiPage}"
+            Route="KabulEvrakiPage" />
+    </FlyoutItem>
+
+</Shell>
